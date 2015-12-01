@@ -1,4 +1,13 @@
-/* This model is a static model used for the beginning game animation
+/*Overall Plans and Description:
+Intro:
+Storyline will begin with Waddles and Family on a larger iceberg and narration will begin
+telling a story. 
+  -Penguins are called from the same model and the parts should animate to make intro animation more realistic
+      -Thoughts: eyes will be happy at first but when iceberg breaks eyebrows will 
+      have distraught expression
+      -arms will also flap 
+/*Penguin Model
+This model is a static model used for the beginning game animation
  It will be simply display a scene where Waddles, the main character is lost and needs help
  1)Will be rendered with basic shapes
  2)If need be animations can be added. 
