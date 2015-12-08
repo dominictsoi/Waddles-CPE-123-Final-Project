@@ -1,0 +1,357 @@
+int sharkTimer, fishTimer, fc;
+PShape t, sharkB, sharkT;
+ArrayList<Fish> fishes = new ArrayList<Fish>();
+ArrayList<Shark> sharks = new ArrayList<Shark>();
+
+void Start()
+{
+  fc = frameCount;
+  sharkTimer = frameCount;
+  fishTimer = frameCount;
+}
+
+void sharkEntry() {
+  if (frameCount - sharkTimer > random(300, 420))
+  {
+    sharks.add(new Shark(800, (int)random(0, height)));
+    sharks.get(0).sharkBody();
+    sharkTimer = frameCount;
+  }
+  for (int i = 0; i < sharks.size(); i++)
+  {
+    sharks.get(i).sharkBody();
+  }
+}
+
+class Shark {
+  PShape sharkB;
+  PShape sharkT;
+  float rad=0;
+  float vel = 0;
+  boolean up;
+  int cX, cY;
+  Shark(int x, int y) {
+    cX = x;
+    cY = y;
+  }
+
+  void sharkBody() {
+
+    sharkB=createShape();
+    sharkB.beginShape();
+    sharkT=createShape();
+    beginShape();
+    fill(color(166, 195, 229));
+    sharkB.vertex(130, 262);
+    sharkB.vertex(136, 266);
+    sharkB.vertex(144, 272);
+    sharkB.vertex(148, 275);
+    sharkB.vertex(154, 276);
+    sharkB.vertex(159, 273);
+    sharkB.vertex(163, 272);
+    sharkB.vertex(167, 270);
+    sharkB.vertex(173, 270);
+    sharkB.vertex(179, 268);
+    sharkB.vertex(184, 270);
+    sharkB.vertex(184, 273);
+    sharkB.vertex(184, 276);
+    sharkB.vertex(179, 278);
+    sharkB.vertex(175, 282);
+    sharkB.vertex(173, 284);
+    sharkB.vertex(172, 286);
+    sharkB.vertex(180, 286);
+    sharkB.vertex(188, 288);
+    sharkB.vertex(198, 288);
+    sharkB.vertex(207, 290);
+    sharkB.vertex(212, 290);
+    sharkB.vertex(218, 289);
+    sharkB.vertex(223, 289);
+    sharkB.vertex(230, 291);
+    sharkB.vertex(243, 294);
+    sharkB.vertex(252, 294);
+    sharkB.vertex(262, 294);
+    sharkB.vertex(270, 294);
+    sharkB.vertex(278, 291);
+    sharkB.vertex(283, 292);
+    sharkB.vertex(293, 290);
+    sharkB.vertex(301, 288);
+    sharkB.vertex(306, 288);
+    sharkB.vertex(319, 283);
+    sharkB.vertex(332, 279);
+    sharkB.vertex(345, 274);
+    sharkB.vertex(349, 272);
+    sharkB.vertex(360, 277);
+    sharkB.vertex(364, 277);
+    sharkB.vertex(370, 277);
+    sharkB.vertex(370, 272);
+    sharkB.vertex(373, 269);
+    sharkB.vertex(377, 270);
+    sharkB.vertex(382, 273);
+    sharkB.vertex(389, 274);
+    sharkB.vertex(395, 276);
+    sharkB.vertex(398, 277);
+    sharkB.vertex(394, 271);
+    sharkB.vertex(394, 266);
+    sharkB.vertex(397, 266);
+    sharkB.vertex(394, 261);
+    sharkB.vertex(393, 253);
+    sharkB.vertex(396, 249);
+    sharkB.vertex(396, 248);
+    sharkB.vertex(390, 246);
+    sharkB.vertex(381, 242);
+    sharkB.vertex(375, 241);
+    sharkB.vertex(371, 238);
+    sharkB.vertex(370, 234);
+    sharkB.vertex(370, 230);
+    sharkB.vertex(372, 229);
+    sharkB.vertex(375, 227);
+    sharkB.vertex(377, 227);
+    sharkB.vertex(371, 226);
+    sharkB.vertex(365, 226);
+    sharkB.vertex(358, 228);
+    sharkB.vertex(351, 229);
+    sharkB.vertex(345, 227);
+    sharkB.vertex(337, 224);
+    sharkB.vertex(328, 220);
+    sharkB.vertex(318, 218);
+    sharkB.vertex(310, 213);
+    sharkB.vertex(300, 211);
+    sharkB.vertex(294, 211);
+    sharkB.vertex(290, 207);
+    sharkB.vertex(287, 199);
+    sharkB.vertex(289, 193);
+    sharkB.vertex(289, 187);
+    sharkB.vertex(292, 183);
+    sharkB.vertex(291, 180);
+    sharkB.vertex(284, 180);
+    sharkB.vertex(276, 182);
+    sharkB.vertex(271, 185);
+    sharkB.vertex(265, 189);
+    sharkB.vertex(258, 193);
+    sharkB.vertex(251, 198);
+    sharkB.vertex(245, 203);
+    sharkB.vertex(238, 207);
+    sharkB.vertex(235, 210);
+    sharkB.vertex(225, 213);
+    sharkB.vertex(216, 215);
+    sharkB.vertex(206, 219);
+    sharkB.vertex(192, 224);
+    sharkB.vertex(180, 228);
+    sharkB.vertex(172, 231);
+    sharkB.vertex(163, 236);
+    sharkB.vertex(152, 240);
+    sharkB.vertex(144, 246);
+    sharkB.vertex(139, 249);
+    sharkB.vertex(133, 254);
+    sharkB.vertex(130, 256);
+    sharkB.vertex(128, 261);
+    sharkB.endShape(CLOSE);
+    sharkTail();
+    drawShark(cX, cY);
+  }
+
+
+  void sharkTail() {  
+    fill(color(166, 195, 229));
+    sharkT.vertex(392, 260);
+    sharkT.vertex(396, 251);
+    sharkT.vertex(401, 247);
+    sharkT.vertex(408, 244);
+    sharkT.vertex(415, 240);
+    sharkT.vertex(423, 236);
+    sharkT.vertex(428, 229);
+    sharkT.vertex(435, 223);
+    sharkT.vertex(442, 215);
+    sharkT.vertex(450, 208);
+    sharkT.vertex(455, 203);
+    sharkT.vertex(460, 199);
+    sharkT.vertex(460, 197);
+    sharkT.vertex(460, 205);
+    sharkT.vertex(460, 211);
+    sharkT.vertex(460, 218);
+    sharkT.vertex(458, 222);
+    sharkT.vertex(455, 229);
+    sharkT.vertex(451, 234);
+    sharkT.vertex(448, 241);
+    sharkT.vertex(445, 247);
+    sharkT.vertex(441, 252);
+    sharkT.vertex(437, 254);
+    sharkT.vertex(432, 257);
+    sharkT.vertex(428, 260);
+    sharkT.vertex(428, 262);
+    sharkT.vertex(428, 266);
+    sharkT.vertex(432, 271);
+    sharkT.vertex(435, 275);
+    sharkT.vertex(437, 279);
+    sharkT.vertex(438, 281);
+    sharkT.vertex(441, 282);
+    sharkT.vertex(441, 285);
+    sharkT.vertex(434, 283);
+    sharkT.vertex(429, 282);
+    sharkT.vertex(424, 278);
+    sharkT.vertex(419, 276);
+    sharkT.vertex(415, 274);
+    sharkT.vertex(407, 269);
+    sharkT.vertex(405, 269);
+    sharkT.vertex(399, 267);
+    sharkT.vertex(398, 268);
+    endShape(CLOSE);
+  }
+  void drawShark(int x, int y) {//image(img1, 75, 100);
+    //whole Shark Control
+    pushMatrix();
+    translate(vel, 0);
+    vel += random(-3.5, -0.5);
+    //SHARK HITBOX
+    fill(166, 195, 229, 50);
+    rect(x+125, y+175, 345, 120);
+    ////////////////////////////
+    pushMatrix();
+    translate(x, y);
+    shape(sharkB);//shark body
+    pushMatrix();
+    translate(-1*(cX+65), 0);
+    rotate(rad);
+    pushMatrix();
+    translate(cX+65, 0);
+    shape(sharkT);//shark tail
+    popMatrix();
+
+
+    fill(0);
+    ellipse(162, 256, 5, 5);
+    if (up==true) {
+      rad-=0.003;
+    } else {
+      rad+=0.003;
+    }
+
+    if (rad>radians(0.75)||rad<radians(-0.75)) {
+      up=!up;
+    }
+
+    popMatrix();
+    //ellipse used to cover the tail and body merge. 
+
+    noStroke();
+    fill(166, 195, 229);
+    ellipse(397, 258, 18, 17);
+    strokeWeight(1);
+    stroke(0);
+
+    popMatrix();
+    popMatrix();
+  }
+}
+
+void fishEntry() {
+  if (frameCount - fishTimer > random(240, 420))
+  {
+    fishes.add(new Fish(850, (int)random(0, height)));
+    fishes.get(0).makeTail();
+    fishTimer = frameCount;
+  }
+  for (int i = 0; i < fishes.size(); i++)
+  {
+    fishes.get(i).makeTail();
+  }
+}
+
+class Fish {
+  int fx, fy;
+  boolean up=true;
+  float rad = 0;
+  float vel = 0;
+  Fish(int x, int y) {
+    fx=x;
+    fy=y;
+  }
+
+  void makeTail() {
+    t=createShape();
+    t.beginShape();
+    scale(1);
+    t.fill(233, 136, 19);
+    t.vertex(35, -13);
+    t.vertex(45, -20);
+    t.vertex(50, -22);
+    t.vertex(55, -24);
+    t.vertex(60, -25);
+    t.vertex(63, -20);
+    t.vertex(63, -15);
+    t.vertex(61, -5);
+    t.vertex(62, 0);
+    t.vertex(63, 10);
+    t.vertex(62, 15);
+    t.vertex(60, 15);
+    t.vertex(55, 14);
+    t.vertex(50, 13);
+    t.vertex(45, 12);
+    t.vertex(40, 11);
+    t.vertex(35, 11);
+    t.endShape(CLOSE);
+    drawFish(fx, fy);
+  }
+
+
+  void drawFish(int x, int y) {
+    pushMatrix();
+    translate(vel, 0);
+    vel += random(-3.5, -0.5);
+    fill(233, 136, 19, 50);
+    //HITBOXES FOR FISH
+    rect(x-45, y-30, 120, 55);
+    /////////////////////
+    strokeWeight(0.7);
+    int w=80;
+    int h=3*w/5;
+    pushMatrix();
+    translate(x, y);
+    fill(233, 136, 20);
+    pushMatrix();
+
+    translate(-40, 0);
+    rotate(rad);
+    pushMatrix();
+    translate(40, 0);
+    shape(t);
+    popMatrix();
+
+    popMatrix();
+
+    ellipse(0, 0, w, h);
+    popMatrix();
+    //eye
+    fill(255);
+    ellipse(x-20, y-5, 12.5, 12.5);//watch this when we scale
+    fill(30);
+    ellipse(x-20, y-5, 8, 8);
+    fill(255);
+    ellipse(x-22, y-6, 4, 4);
+    noFill();
+    arc(x-10, y, w/8, h/2, -PI/2, PI/2);
+    fill(color(166, 195, 229));
+    popMatrix();
+    endShape();
+    if (up==true) {
+      rad-=0.01;
+    } else {
+      rad+=0.01;
+    }
+
+    if (rad>radians(2.5)||rad<radians(-1)) {
+      up=!up;
+    }
+  }
+}
+
+void setup() {
+  size(800, 800);
+  Start();
+}
+
+void draw() {
+  background(29);
+  fishEntry();
+  sharkEntry();
+}
